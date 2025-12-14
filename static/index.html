@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Waste Classifier</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>AI Waste Classifier</h1>
+        <p>Identifikasi jenis sampah menggunakan model AI yang sudah kamu latih.</p>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <!-- FORM UPLOAD -->
+            <form id="upload-form" class="panel" enctype="multipart/form-data">
+                <h2>Upload Foto Sampah</h2>
+                <p>Unggah foto sampah yang ingin diidentifikasi.</p>
+
+                <div id="upload-area" class="upload-area">
+                    <p class="icon">📷</p>
+                    <p class="title">Tarik & letakkan gambar di sini</p>
+                    <p class="subtitle">atau pilih file dari perangkat kamu</p>
+
+                    <button type="button" id="btn-choose" class="btn primary">Pilih File</button>
+                    <input type="file" name="image" id="file-input" accept="image/*" hidden required>
+                </div>
+
+                <div class="preview-wrapper">
+                    <p class="label">Preview Gambar</p>
+                    <div id="preview-box" class="preview-box">Belum ada gambar</div>
+                </div>
+
+                <div class="actions">
+                    <button type="reset" id="btn-reset" class="btn secondary">Reset</button>
+                    <button type="submit" id="btn-identify" class="btn primary">Identifikasi</button>
+                </div>
+
+                <div id="loading" class="loading hidden">
+                    <div class="dot"></div>
+                    <span>Memproses gambar...</span>
+                </div>
+            </form>
+
+            <!-- PANEL HASIL -->
+            <section class="panel">
+                <div class="badge">
+                    <span class="dot-green"></span> Model AI Aktif
+                </div>
+
+                <h2>Hasil Prediksi</h2>
+                <p id="result-confidence" class="confidence">Belum ada prediksi.</p>
+
+                <div id="result-tag" class="result-tag hidden">
+                    <span id="result-label">-</span>
+                </div>
+
+                <h3>Rekomendasi Pembuangan</h3>
+                <ul id="result-recommendation">
+                    <li>Unggah foto untuk melihat rekomendasi.</li>
+                </ul>
+
+                <h3>Catatan</h3>
+                <p id="result-notes">Hasil prediksi ini masih simulasi.</p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        Prototype UI · AI Waste Classifier
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
