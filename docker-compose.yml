@@ -3,4 +3,4 @@ services:
     build: .
     restart: unless-stopped
     ports:
-    - "5213:5000"
+    - "8012:5000"
