@@ -25,3 +25,6 @@ def predict():
     img = Image.open(request.files["image"]).convert("RGB")
     result = predict_image(model, img)
     return jsonify(result)
+
+if __name__ == "__main__":
+    app.run()
