@@ -19,7 +19,7 @@ CLASSES = [
 
 CLASS_META = {
     'battery':    {'type': 'anorganik', 'recyclable': False},
-    'biological': {'type': 'organic',   'recyclable': False},
+    'biological': {'type': 'organik',   'recyclable': False},
     'cardboard':  {'type': 'anorganik', 'recyclable': True},
     'clothes':    {'type': 'anorganik', 'recyclable': True},
     'glass':      {'type': 'anorganik', 'recyclable': True},
