@@ -1,83 +1,105 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Waste Classifier</title>
+    <meta name="description" content="Identifikasi jenis sampah menggunakan AI untuk pengelolaan limbah yang lebih efisien">
+    <title>AI Waste Classifier - Klasifikasi Sampah Otomatis</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
     <header>
-        <h1>AI Waste Classifier</h1>
-        <p>Identifikasi jenis sampah menggunakan model AI yang sudah kamu latih.</p>
+        <div class="header-content">
+            <h1>🌿 AI Waste Classifier</h1>
+            <p>Identifikasi jenis sampah menggunakan model AI yang sudah kamu latih</p>
+        </div>
     </header>
 
     <main>
         <div class="container">
-
             <!-- FORM UPLOAD -->
-            <form id="upload-form" class="panel" enctype="multipart/form-data">
+            <form id="upload-form" class="panel" enctype="multipart/form-data" aria-label="Form upload gambar sampah">
                 <h2>Upload Foto Sampah</h2>
-                <p>Unggah foto sampah yang ingin diidentifikasi.</p>
+                <p class="section-description">Unggah foto sampah yang ingin diidentifikasi (JPG, PNG, WEBP)</p>
 
-                <div id="upload-area" class="upload-area">
-                    <p class="icon">📷</p>
-                    <p class="title">Tarik & letakkan gambar di sini</p>
-                    <p class="subtitle">atau pilih file dari perangkat kamu</p>
-
-                    <button type="button" id="btn-choose" class="btn primary">Pilih File</button>
-                    <input type="file" name="image" id="file-input" accept="image/*" hidden required>
+                <div id="upload-area" class="upload-area" role="button" tabindex="0" aria-label="Area upload gambar">
+                    <div class="upload-content">
+                        <p class="icon" aria-hidden="true">📷</p>
+                        <p class="title">Tarik & letakkan gambar di sini</p>
+                        <p class="subtitle">atau pilih file dari perangkat kamu</p>
+                        <button type="button" id="btn-choose" class="btn primary" aria-label="Pilih file gambar">
+                            <span>Pilih File</span>
+                        </button>
+                    </div>
+                    <input type="file" name="image" id="file-input" accept="image/*" hidden required aria-required="true">
                 </div>
 
                 <div class="preview-wrapper">
-                    <p class="label">Preview Gambar</p>
-                    <div id="preview-box" class="preview-box">Belum ada gambar</div>
+                    <label class="label" for="preview-box">Preview Gambar</label>
+                    <div id="preview-box" class="preview-box" role="img" aria-label="Preview gambar yang diupload">
+                        <span class="preview-placeholder">Belum ada gambar</span>
+                    </div>
                 </div>
 
                 <div class="actions">
-                    <button type="reset" id="btn-reset" class="btn secondary">Reset</button>
-                    <button type="submit" id="btn-identify" class="btn primary">Identifikasi</button>
+                    <button type="reset" id="btn-reset" class="btn secondary" aria-label="Reset form">
+                        <span>Reset</span>
+                    </button>
+                    <button type="submit" id="btn-identify" class="btn primary" aria-label="Identifikasi gambar">
+                        <span>Identifikasi</span>
+                    </button>
                 </div>
 
-                <div id="loading" class="loading hidden">
-                    <div class="dot"></div>
+                <div id="loading" class="loading hidden" role="status" aria-live="polite">
+                    <div class="spinner">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
                     <span>Memproses gambar...</span>
                 </div>
+
+                <div id="error-message" class="error-message hidden" role="alert" aria-live="assertive"></div>
             </form>
 
             <!-- PANEL HASIL -->
-            <section class="panel">
-                <div class="badge">
-                    <span class="dot-green"></span> Model AI Aktif
+            <section class="panel" aria-label="Hasil prediksi">
+                <div class="badge" role="status">
+                    <span class="dot-green" aria-hidden="true"></span> 
+                    <span>Model AI Aktif</span>
                 </div>
 
                 <h2>Hasil Prediksi</h2>
-                <p id="result-confidence" class="confidence">Belum ada prediksi.</p>
+                <p id="result-confidence" class="confidence" aria-live="polite">Belum ada prediksi.</p>
 
-                <div id="result-tag" class="result-tag hidden">
-                    <span id="result-label">-</span>
+                <div id="result-tag" class="result-tag hidden" role="status">
+                    <span id="result-label" class="result-label-text">-</span>
+                    <div class="result-badges">
+                        <span id="type-badge" class="info-badge hidden"></span>
+                        <span id="recyclable-badge" class="info-badge hidden"></span>
+                    </div>
                 </div>
 
-                <h3>Rekomendasi Pembuangan</h3>
-                <ul id="result-recommendation">
-                    <li>Unggah foto untuk melihat rekomendasi.</li>
-                </ul>
+                <div class="result-section">
+                    <h3>💡 Rekomendasi Pembuangan</h3>
+                    <ul id="result-recommendation" class="recommendation-list">
+                        <li>Unggah foto untuk melihat rekomendasi.</li>
+                    </ul>
+                </div>
 
-                <h3>Catatan</h3>
-                <p id="result-notes">Hasil prediksi ini masih simulasi.</p>
+                <div class="result-section">
+                    <h3>📋 Catatan</h3>
+                    <p id="result-notes" class="notes-text">Model AI ini membantu mengidentifikasi jenis sampah untuk pembuangan yang lebih efisien dan ramah lingkungan.</p>
+                </div>
             </section>
-
         </div>
     </main>
 
     <footer>
-        Prototype UI · AI Waste Classifier
+        <p>Prototype UI · AI Waste Classifier © 2025</p>
     </footer>
 
     <script src="script.js"></script>
 </body>
-
 </html>
