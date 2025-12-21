@@ -1,6 +1,6 @@
-# Manual Instruksi — garbage-id
+# Manual Instruksi
 
-Versi singkat: panduan ini menjelaskan cara menyiapkan, menjalankan, dan menggunakan layanan klasifikasi sampah pada repo ini.
+Panduan ini menjelaskan cara menyiapkan, menjalankan, dan menggunakan layanan klasifikasi sampah pada repo ini.
 
 ## Ringkasan proyek
 - Server: [server.py](server.py#L1)
@@ -16,20 +16,25 @@ Versi singkat: panduan ini menjelaskan cara menyiapkan, menjalankan, dan menggun
 Rekomendasi: gunakan virtual environment saat menjalankan lokal.
 
 ## Instalasi (lokal)
-1. Buat virtual environment dan aktifkan:
+1. Buat virtual environment:
 
 ```bash
 python3 -m venv venv
-source venv/bin/activate
 ```
 
-2. Instal dependensi:
+2. Aktifkan virtual environment:
+```bash
+source venv/bin/activate # Linux, macOS
+.\venv\Scripts\activate # Windows
+```
+
+3. Instal dependensi:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Pastikan file model `model.keras` berada di root project.
+4. Pastikan file model `model.keras` berada di root project.
 
 ## Menjalankan server (lokal)
 Jalankan:
@@ -56,12 +61,6 @@ Akses UI di `http://localhost:8012/` atau endpoint API di `http://localhost:8012
 - `POST /predict` — unggah gambar sebagai `multipart/form-data` dengan field `image`.
 
 Contoh `curl`:
-
-```bash
-curl -X POST -F "image=@/path/to/photo.jpg" http://localhost:8012/predict
-```
-
-Contoh `curl` lewat Docker (port 8012):
 
 ```bash
 curl -X POST -F "image=@/path/to/photo.jpg" http://localhost:8012/predict
@@ -95,3 +94,5 @@ Model disimpan di `model.keras` pada root. [model/loader.py](model/loader.py#L1)
 Jika Anda ingin mengganti model:
 1. Ganti file `model.keras` dengan model baru (format Keras saved model).
 2. Restart server.
+
+Model dilatih pada file [train.ipynb](train.ipynb)
