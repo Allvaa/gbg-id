@@ -1,5 +1,5 @@
-flask
-keras
-pillow
-tensorflow
-numpy
+Flask==3.1.2
+keras==3.10.0
+pillow==11.3.0
+tensorflow==2.20.0
+numpy==2.0.2
